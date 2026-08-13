@@ -20,6 +20,6 @@ export default function SiteShell({lang, children}:{lang:string, children:React.
     </header>
     {open&&<div className="mobile-panel">{nav.map(([p,l])=><Link onClick={()=>setOpen(false)} key={p} href={`/${lang}/${p}`.replace(/\/$/,'')}>{l}</Link>)}</div>}
     <main>{children}</main>
-    <footer className="footer"><div><strong>{tr.footer}</strong><span>© {new Date().getFullYear()}</span></div><div className="socials"><a href="https://www.instagram.com/mrsportmodel/" target="_blank"><Instagram size={18}/>Instagram</a><a href="https://en.wikipedia.org/wiki/Hassan_Golestaneh" target="_blank"><ExternalLink size={18}/>Wikipedia</a></div></footer>
+    <footer className="footer"><div><strong>{tr.footer}</strong><span>© {new Date().getFullYear()}</span></div><div className="socials"><a href="https://www.instagram.com/mrsportmodel/" target="_blank" rel="noreferrer" aria-label="Hassan Golestaneh on Instagram"><Instagram size={18}/>Instagram</a><a href="https://en.wikipedia.org/wiki/Hassan_Golestaneh" target="_blank" rel="noreferrer" aria-label="Hassan Golestaneh on Wikipedia"><ExternalLink size={18}/>Wikipedia</a><a href="https://www.imdb.com/name/nm13963676/" target="_blank" rel="noreferrer" aria-label="Hassan Golestaneh on IMDb"><ExternalLink size={18}/>IMDb</a></div></footer>
   </div>
 }
