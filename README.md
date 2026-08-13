@@ -29,6 +29,3 @@ Open `http://localhost:3000`.
 ## Notes
 - No country flag is used anywhere in the design.
 - This site is a personal biography / official profile, not a coaching sales site.
-
-## SEO / custom domain
-After connecting your final domain in Vercel, add an Environment Variable named `NEXT_PUBLIC_SITE_URL` with the full canonical origin, for example `https://yourdomain.com`, then redeploy. This keeps canonical URLs, sitemap.xml and robots.txt aligned with the final domain.
