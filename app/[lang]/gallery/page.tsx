@@ -1,0 +1,2 @@
+import PageHero from '@/components/PageHero'; import {getT} from '@/lib/i18n';
+export default async function Gallery({params}:{params:Promise<{lang:string}>}){const {lang}=await params;const tr=getT(lang);return <><PageHero eyebrow="ARCHIVE" title={tr.galleryTitle} lead={tr.galleryLead}/><section className="galleryGrid">{[1,2,3,4,5,6].map(n=><div className="placeholder" key={n}><span>IMAGE 0{n}</span></div>)}</section><p className="galleryNote">{tr.galleryEmpty}</p></>}

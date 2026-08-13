@@ -1,0 +1,2 @@
+import PageHero from '@/components/PageHero'; import {getT} from '@/lib/i18n';
+export default async function Career({params}:{params:Promise<{lang:string}>}){const {lang}=await params;const tr=getT(lang);return <><PageHero eyebrow="JOURNEY" title={tr.careerTitle} lead={tr.careerLead}/><section className="timeline">{tr.careerItems.map((x:any,i:number)=><article key={i}><span className="index">0{i+1}</span><div><small>{x[0]}</small><h2>{x[1]}</h2><p>{x[2]}</p></div></article>)}</section></>}

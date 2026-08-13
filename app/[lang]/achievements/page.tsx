@@ -1,0 +1,2 @@
+import PageHero from '@/components/PageHero'; import {getT} from '@/lib/i18n';
+export default async function Achievements({params}:{params:Promise<{lang:string}>}){const {lang}=await params;const tr=getT(lang);return <><PageHero eyebrow="RECORD" title={tr.achievementsTitle} lead={tr.achievementsLead}/><section className="cards">{tr.achievementsItems.map((x:any,i:number)=><article key={i}><span>0{i+1}</span><h2>{x[0]}</h2><p>{x[1]}</p></article>)}</section></>}
