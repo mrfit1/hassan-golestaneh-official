@@ -1,10 +1,20 @@
-import PageHero from '@/components/PageHero'; import {getT} from '@/lib/i18n'; import {ExternalLink} from 'lucide-react';
-const links=[
- ['Instagram','@mrsportmodel','https://www.instagram.com/mrsportmodel/'],
- ['Wikipedia','Hassan Golestaneh','https://en.wikipedia.org/wiki/Hassan_Golestaneh'],
- ['IMDb','Hassan Golestaneh','https://www.imdb.com/name/nm13963676/'],
- ['NPC News Online','2017 Arnold Amateur','https://contests.npcnewsonline.com/contests/2017/arnold_amateur/4j45/hassan_golestaneh'],
- ['Fitness Academy Europe','Fitness Nutrition Specialist','https://fitnessacademyeurope.com/faepro/user/fae995279/'],
- ['National Olympic Committee','2024 sports appointment','https://www.olympic.ir/Components/News/View/NewsPDF2.aspx?id=40557&lcid=1033']
-];
-export default async function Media({params}:{params:Promise<{lang:string}>}){const {lang}=await params;const tr=getT(lang);return <><PageHero eyebrow="PRESS / LINKS" title={tr.mediaTitle} lead={tr.mediaLead}/><section className="mediaList">{links.map(x=><a key={x[0]} href={x[2]} target="_blank"><div><small>{x[0]}</small><h2>{x[1]}</h2></div><ExternalLink/></a>)}</section></>}
+import PageHero from '@/components/PageHero';
+import { getT } from '@/lib/i18n';
+import { ExternalLink } from 'lucide-react';
+type MediaItem={source:string;title:string;url:string;tag:'press'|'international'|'official'};
+const items:MediaItem[]=[
+{source:'Borna News',title:'First Iranian world fitness medalist — interview and profile',url:'https://www.borna.news/%D8%A8%D8%AE%D8%B4-%D9%88%D8%B1%D8%B2%D8%B4%DB%8C-7/1105396-%D8%B5%D8%AD%D8%A8%D8%AA-%D9%87%D8%A7%DB%8C-%D8%AC%D8%A7%D9%84%D8%A8-%D8%A7%D9%88%D9%84%DB%8C%D9%86-%D9%85%D8%AF%D8%A7%D9%84-%D8%A2%D9%88%D8%B1-%D9%81%DB%8C%D8%AA%D9%86%D8%B3-%D8%A7%DB%8C%D8%B1%D8%A7%D9%86-%D8%AF%D8%B1-%D8%AC%D9%87%D8%A7%D9%86-%D8%A8%D8%A8%DB%8C%D9%86%DB%8C%D8%AF',tag:'press'},
+{source:'Mizan News',title:'A historic Iranian presence in world fitness',url:'https://www.mizan.news/fa/news/244703',tag:'press'},
+{source:'Young Journalists Club',title:'International fitness podium coverage',url:'https://www.yjc.ir/fa/news/5866612',tag:'press'},
+{source:'Borna / Vista',title:'Sports leadership appointment',url:'https://vista.ir/n/borna-5ndxb',tag:'press'},
+{source:'NPC News Online',title:'2017 Arnold Amateur — official competitor record',url:'https://contests.npcnewsonline.com/contests/2017/arnold_amateur/4j45/hassan_golestaneh',tag:'international'},
+{source:'GMV International',title:'2017 Arnold USA Amateur — results archive',url:'https://gmvimbb.com/2017-arnold-usa-results-amateur-men/',tag:'international'},
+{source:'Fitness International Federation',title:'FIF Iran President · FIF Armenia President',url:'https://www.fifinternational.net/our-team',tag:'international'},
+{source:'National Olympic Committee of Iran',title:'Official sports appointment — 2024',url:'https://www.olympic.ir/Components/News/View/NewsPDF2.aspx?id=40557&lcid=1033',tag:'official'},
+{source:'Fitness Academy Europe',title:'Fitness Nutrition Specialist profile',url:'https://fitnessacademyeurope.com/faepro/user/fae995279/',tag:'official'},
+{source:'Wikipedia',title:'Hassan Golestaneh — public biography',url:'https://en.wikipedia.org/wiki/Hassan_Golestaneh',tag:'official'},
+{source:'IMDb',title:'Hassan Golestaneh — IMDb profile',url:'https://www.imdb.com/name/nm13963676/',tag:'official'},
+{source:'Instagram',title:'Official Instagram · @mrsportmodel',url:'https://www.instagram.com/mrsportmodel/',tag:'official'}];
+const copy:Record<string,any>={en:{eyebrow:'PRESS / MEDIA',featured:'Featured coverage',press:'News & Press',international:'International Coverage',official:'Official Profiles',read:'Open source'},fa:{eyebrow:'رسانه / خبر',featured:'پوشش‌های منتخب',press:'خبرها و رسانه‌ها',international:'پوشش بین‌المللی',official:'پروفایل‌های رسمی',read:'مشاهده منبع'},fr:{eyebrow:'PRESSE / MÉDIAS',featured:'Couverture à la une',press:'Actualités & Presse',international:'Couverture internationale',official:'Profils officiels',read:'Voir la source'},es:{eyebrow:'PRENSA / MEDIOS',featured:'Cobertura destacada',press:'Noticias y prensa',international:'Cobertura internacional',official:'Perfiles oficiales',read:'Abrir fuente'}};
+function Card({item,read}:{item:MediaItem;read:string}){return <a className="mediaCard" href={item.url} target="_blank" rel="noreferrer"><div><small>{item.source}</small><h2>{item.title}</h2></div><span>{read}<ExternalLink size={15}/></span></a>}
+export default async function Media({params}:{params:Promise<{lang:string}>}){const {lang}=await params;const tr=getT(lang);const c=copy[lang]??copy.en;const featured=items.slice(0,3);const groups:[string,MediaItem[]][]=[[c.press,items.filter(x=>x.tag==='press')],[c.international,items.filter(x=>x.tag==='international')],[c.official,items.filter(x=>x.tag==='official')]];return <><PageHero eyebrow={c.eyebrow} title={tr.mediaTitle} lead={tr.mediaLead}/><section className="mediaHub"><div className="mediaSectionHead"><span>01</span><h2>{c.featured}</h2></div><div className="mediaFeatured">{featured.map(x=><Card key={x.url} item={x} read={c.read}/>)}</div>{groups.map(([title,list],i)=><section className="mediaGroup" key={title}><div className="mediaSectionHead"><span>0{i+2}</span><h2>{title}</h2></div><div className="mediaCards">{list.map(x=><Card key={x.url} item={x} read={c.read}/>)}</div></section>)}</section></>}
