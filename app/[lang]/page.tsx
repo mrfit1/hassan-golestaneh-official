@@ -7,7 +7,6 @@ export default async function Home({params}:{params:Promise<{lang:string}>}){
   <section className="hero">
     <video autoPlay muted loop playsInline preload="metadata" className="heroVideo"><source src="/videos/hero.mp4" type="video/mp4"/></video>
     <div className="heroShade"/><div className="heroContent"><div className="kicker light">{tr.heroEyebrow}</div><h1>{tr.heroTitle}</h1><p>{tr.heroSub}</p><Link href={`/${lang}/about`} className="cta">{tr.heroCta}<ArrowRight size={18}/></Link></div>
-    <div className="scrollMark">SCROLL</div>
   </section>
   <section className="intro split"><div><div className="kicker">PROFILE</div><h2>{tr.introTitle}</h2></div><div><p>{tr.introBody}</p><div className="pillars">{tr.pillars.map((p:string,i:number)=><span key={p}>0{i+1} · {p}</span>)}</div></div></section>
   <section className="darkSection"><div className="sectionHead"><div className="kicker light">MILESTONES</div><h2>{tr.featuredTitle}</h2></div><div className="milestoneGrid">{tr.featured.map((x:any)=><article key={x[0]+x[1]}><span>{x[0]}</span><h3>{x[1]}</h3><p>{x[2]}</p></article>)}</div></section>

@@ -11,3 +11,16 @@
 
 /* Expanded competition photo archive */
 .achievementArchiveGrid{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.achievementArchiveGrid img{width:100%;height:430px;object-fit:cover;display:block}.realGallery .galleryPhoto img{background:#111}.galleryPhoto:nth-child(7n+1) img,.galleryPhoto:nth-child(7n+4) img{height:620px}@media(max-width:900px){.achievementArchiveGrid{grid-template-columns:1fr 1fr}.achievementArchiveGrid img{height:390px}}@media(max-width:620px){.achievementArchiveGrid{grid-template-columns:1fr}.achievementArchiveGrid img{height:auto;max-height:680px}.galleryPhoto:nth-child(7n+1) img,.galleryPhoto:nth-child(7n+4) img{height:auto}}
+
+/* Requested final visual corrections — Aug 2026 */
+.hero h1{font-size:clamp(46px,6.2vw,104px);line-height:.88;max-width:920px}
+/* Keep event videos silent and present lower-resolution footage at a restrained size. */
+.achievementStory:last-child .eventVideos{max-width:760px;width:100%;justify-self:center}
+.achievementStory:last-child .eventVideo video{max-height:480px;object-fit:contain}
+/* Arnold three-athlete stage image: bias crop toward Hassan on the left. */
+.achievementStory:last-child .achievementMedia img{object-position:18% center}
+/* Huntington media hero: frame the upper body rather than the legs. */
+.mediaFilm>video{object-position:center 22%}
+/* Archive images that contain documents/posters must stay uncropped. */
+.galleryPhoto9 img,.galleryPhoto35 img,.galleryPhoto36 img{object-fit:contain!important;height:auto!important;max-height:720px;background:#111}
+@media(max-width:620px){.hero h1{font-size:46px}.achievementStory:last-child .eventVideos{max-width:100%}.mediaFilm>video{object-position:center 18%}}

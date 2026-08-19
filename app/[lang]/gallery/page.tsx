@@ -24,14 +24,12 @@ const photos=[
   ['/images/arnold-2017/backstage-portrait-02.jpg','arnold'],
   ['/images/arnold-2017/airport-portrait.jpg','arnold'],
   ['/images/arnold-2017/expo-portrait-02.jpg','arnold'],
-  ['/images/arnold-2017/arnold-group.jpg','arnold'],
   ['/images/arnold-2017/athlete-backstage-01.jpg','arnold'],
   ['/images/arnold-2017/athlete-backstage-02.jpg','arnold'],
   ['/images/arnold-2017/guest-backstage-01.jpg','arnold'],
   ['/images/arnold-2017/media-backstage.jpg','arnold'],
   ['/images/arnold-2017/guest-expo-01.jpg','arnold'],
   ['/images/arnold-2017/guest-expo-02.jpg','arnold'],
-  ['/images/arnold-2017/guest-expo-03.jpg','arnold'],
   ['/images/arnold-2017/expo-portrait-03.jpg','arnold'],
   ['/images/arnold-2017/expo-portrait-04.jpg','arnold'],
   ['/images/arnold-2017/la-fitness.jpg','arnold'],
@@ -43,7 +41,6 @@ const photos=[
   ['/images/huntington-2017/medal.jpg','huntington'],
   ['/images/huntington-2017/stage.jpg','huntington'],
   ['/images/arnold-2017/stage.jpg','arnold'],
-  ['/images/arnold-2017/credentials.jpg','arnold'],
   ['/images/arnold-2017/event-group.jpg','arnold']
 ] as const;
 export default async function Gallery({params}:{params:Promise<{lang:string}>}){const {lang}=await params;const tr=getT(lang);const c=copy[lang]??copy.en;return <><PageHero eyebrow="ARCHIVE" title={tr.galleryTitle} lead={tr.galleryLead}/><section className="realGallery">{photos.map(([src,key],i)=><figure className={`galleryPhoto galleryPhoto${i+1}`} key={src}><img loading="lazy" src={src} alt={c[key]}/><figcaption><span>{String(i+1).padStart(2,'0')}</span>{c[key]}</figcaption></figure>)}</section></>}
