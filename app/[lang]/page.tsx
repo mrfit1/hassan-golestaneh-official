@@ -1,6 +1,10 @@
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { getT } from '@/lib/i18n';
+
+export async function generateMetadata({params}:{params:Promise<{lang:string}>}):Promise<Metadata>{ const {lang}=await params; return pageMetadata(lang,'home',''); }
 export default async function Home({params}:{params:Promise<{lang:string}>}){
  const {lang}=await params; const tr=getT(lang);
  return <>

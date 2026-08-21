@@ -19,7 +19,7 @@ npm run dev
 Open `http://localhost:3000`.
 
 ## Before launch
-1. Replace `https://example.com` in `app/layout.tsx`, `app/robots.ts`, and `app/sitemap.ts` with your real domain.
+1. Production SEO domain is configured as `https://hassangolestaneh.com` in `lib/seo.ts`.
 2. Keep your hero video at `public/videos/hero.mp4`.
 3. Add official gallery photos to `public/images` and replace the placeholder blocks in `app/[lang]/gallery/page.tsx`.
 4. Review biography text and add/remove any claims you do not want displayed.

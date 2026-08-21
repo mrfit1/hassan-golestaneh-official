@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 import PageHero from '@/components/PageHero';
 import ContactForm from '@/components/ContactForm';
 import { getT } from '@/lib/i18n';
@@ -38,6 +40,8 @@ const copy: Record<string, any> = {
   }
 };
 
+
+export async function generateMetadata({params}:{params:Promise<{lang:string}>}):Promise<Metadata>{ const {lang}=await params; return pageMetadata(lang,'contact','contact'); }
 export default async function Contact({ params }: { params: Promise<{ lang: string }> }) {
   const { lang } = await params;
   const tr = getT(lang);
